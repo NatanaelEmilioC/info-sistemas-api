@@ -14,14 +14,14 @@ import { VeiculoService } from './shared/veiculo.service';
 export class VeiculosController {
   constructor(private veiculoService: VeiculoService) {}
 
-  @Get('getAll')
-  async getAll(): Promise<Veiculo[]> {
-    return this.veiculoService.getAll();
+  @Get('readAll')
+  async readAll(): Promise<Veiculo[]> {
+    return this.veiculoService.readAll();
   }
 
-  @Get('getById/:id')
-  async getById(@Param('id') id: string): Promise<Veiculo> {
-    return this.veiculoService.getById(id);
+  @Get('readById/:id')
+  async readById(@Param('id') id: string): Promise<Veiculo> {
+    return this.veiculoService.readById(id);
   }
 
   @Post('create')
@@ -40,5 +40,10 @@ export class VeiculosController {
   @Delete('delete/:id')
   async delete(@Param('id') id: string) {
     this.veiculoService.delete(id);
+  }
+
+  @Delete('deleteByPlaca/:placa')
+  async deleteByPlaca(@Param('placa') placa: string) {
+    this.veiculoService.deleteByPlaca(placa);
   }
 }

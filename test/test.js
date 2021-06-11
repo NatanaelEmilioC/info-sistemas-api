@@ -56,7 +56,7 @@ describe('Veiculos', () => {
       chai
         .request('http://localhost:3000')
         .post('/veiculos/create')
-        .type('form')
+        .type('json')
         .send(veiculo) // Enviar esse arquivo
         .end((err, res) => {
           res.should.have.status(201);
@@ -80,7 +80,7 @@ describe('Veiculos', () => {
       chai
         .request('http://localhost:3000')
         .put('/veiculos/update/' + id)
-        .type('form')
+        .type('json')
         .send(veiculo) // Enviar esse arquivo para trocar os dados do existente
         .end((err, res) => {
           res.should.have.status(200);

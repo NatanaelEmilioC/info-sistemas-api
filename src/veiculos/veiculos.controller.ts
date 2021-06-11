@@ -1,3 +1,4 @@
+import { RequisicaoCriacaoVeiculoDTO } from './dtos/requisicao-criacao-veiculo';
 import {
   Body,
   Controller,
@@ -25,14 +26,14 @@ export class VeiculosController {
   }
 
   @Post('create')
-  async create(@Body() veiculo: Veiculo): Promise<Veiculo> {
+  async create(@Body() veiculo: RequisicaoCriacaoVeiculoDTO): Promise<Veiculo> {
     return this.veiculoService.create(veiculo);
   }
 
   @Put('update/:id')
   async update(
     @Param('id') id: string,
-    @Body() veiculo: Veiculo,
+    @Body() veiculo: RequisicaoCriacaoVeiculoDTO,
   ): Promise<Veiculo> {
     return this.veiculoService.update(id, veiculo);
   }

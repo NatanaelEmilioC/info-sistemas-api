@@ -1,3 +1,4 @@
+import { RequisicaoCriacaoVeiculoDTO } from './../dtos/requisicao-criacao-veiculo';
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -17,12 +18,12 @@ export class VeiculoService {
     return await this.veiculoModel.findById(id).exec();
   }
 
-  async create(veiculo: Veiculo) {
+  async create(veiculo: RequisicaoCriacaoVeiculoDTO) {
     const createdVeiculo = new this.veiculoModel(veiculo);
     return createdVeiculo.save();
   }
 
-  async update(id: string, veiculo: Veiculo) {
+  async update(id: string, veiculo: RequisicaoCriacaoVeiculoDTO) {
     await this.veiculoModel.updateOne({ _id: id }, veiculo).exec();
     return this.readById(id);
   }
